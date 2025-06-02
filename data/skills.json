@@ -1,0 +1,148 @@
+{
+  "snealer": [
+    {
+      "name": "Drain Strike",
+      "target": "enemy",
+      "type": "damage+heal",
+      "multiplier": 0.5,
+      "cooldown": 0,
+      "note": "Deals 50% damage and heals for the same amount"
+    },
+    {
+      "name": "Soul Splash",
+      "target": "allEnemies",
+      "type": "aoe+heal",
+      "multiplier": 0.25,
+      "cooldown": 2,
+      "note": "Deals 25% damage to all enemies, heals same amount"
+    },
+    {
+      "name": "Blood Gamble",
+      "target": "enemy",
+      "type": "high-risk",
+      "multiplier": 4.0,
+      "hpCostPercent": 0.5,
+      "cooldown": 5,
+      "note": "Deals 400% damage but loses 50% current HP"
+    }
+  ],
+  "alex": [
+    {
+      "name": "Sword Slash",
+      "target": "enemy",
+      "type": "damage",
+      "multiplier": 1.0,
+      "cooldown": 0
+    },
+    {
+      "name": "Medic Touch",
+      "target": "ally",
+      "type": "heal",
+      "healPercent": 0.2,
+      "cooldown": 3
+    },
+    {
+      "name": "Holy Cleave",
+      "target": "enemy",
+      "type": "damage+healLowestAlly",
+      "multiplier": 2.0,
+      "cooldown": 5
+    }
+  ],
+  "tayous": [
+    {
+      "name": "Battle Strike",
+      "target": "enemy",
+      "type": "damage",
+      "multiplier": 1.0,
+      "cooldown": 0
+    },
+    {
+      "name": "Inspire Strength",
+      "target": "ally",
+      "type": "buff-atk",
+      "buffPercent": 0.3,
+      "duration": 2,
+      "cooldown": 3
+    },
+    {
+      "name": "Inspire Defense",
+      "target": "ally",
+      "type": "buff-def",
+      "buffPercent": 0.3,
+      "duration": 2,
+      "cooldown": 3
+    }
+  ],
+  "blazehound": [
+    {
+      "name": "Bite",
+      "target": "enemy",
+      "type": "damage",
+      "multiplier": 1.0,
+      "cooldown": 0
+    },
+    {
+      "name": "Flame Claw",
+      "target": "enemy",
+      "type": "damage",
+      "multiplier": 1.5,
+      "cooldown": 3
+    },
+    {
+      "name": "Inferno Rage",
+      "target": "enemy",
+      "type": "damage",
+      "multiplier": 2.5,
+      "cooldown": 6
+    }
+  ],
+  "shardfang": [
+    {
+      "name": "Pierce",
+      "target": "enemy",
+      "type": "damage",
+      "multiplier": 1.0,
+      "cooldown": 0
+    },
+    {
+      "name": "Evasive Stance",
+      "target": "self",
+      "type": "buff-eva",
+      "buffAmount": 5,
+      "duration": 2,
+      "cooldown": 5
+    },
+    {
+      "name": "Spine Crush",
+      "target": "enemy",
+      "type": "damage",
+      "multiplier": 1.5,
+      "cooldown": 3
+    }
+  ],
+  "zingrief": [
+    {
+      "name": "Smash",
+      "target": "enemy",
+      "type": "damage",
+      "multiplier": 1.0,
+      "cooldown": 0
+    },
+    {
+      "name": "Dark Mend",
+      "target": "allAllies",
+      "type": "heal",
+      "healPercent": 0.1,
+      "cooldown": 5
+    },
+    {
+      "name": "Stone Form",
+      "target": "self",
+      "type": "buff-def",
+      "buffPercent": 1.0,
+      "duration": 3,
+      "cooldown": 10
+    }
+  ]
+}

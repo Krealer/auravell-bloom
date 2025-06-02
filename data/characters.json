@@ -1,0 +1,112 @@
+{
+  "characters": [
+    {
+      "id": "snealer",
+      "name": "Snealer",
+      "sprite": "assets/snealer.png",
+      "hp": 120,
+      "maxHp": 120,
+      "atk": 18,
+      "def": 10,
+      "spd": 15,
+      "eva": 20,
+      "skills": [
+        {
+          "name": "Leech Strike",
+          "type": "damage",
+          "power": 50,
+          "lifesteal": true,
+          "target": "enemy"
+        },
+        {
+          "name": "Drain Swipe",
+          "type": "damage",
+          "power": 25,
+          "lifesteal": true,
+          "target": "enemy",
+          "aoe": true,
+          "cooldown": 2
+        },
+        {
+          "name": "Vampiric Crush",
+          "type": "damage",
+          "power": 400,
+          "selfDamage": 0.5,
+          "target": "enemy",
+          "cooldown": 5
+        }
+      ]
+    },
+    {
+      "id": "alex",
+      "name": "Alex",
+      "sprite": "assets/alex.png",
+      "hp": 140,
+      "maxHp": 140,
+      "atk": 16,
+      "def": 12,
+      "spd": 12,
+      "eva": 15,
+      "skills": [
+        {
+          "name": "Strike",
+          "type": "damage",
+          "power": 100,
+          "target": "enemy"
+        },
+        {
+          "name": "Heal",
+          "type": "heal",
+          "power": 0.2,
+          "target": "ally",
+          "cooldown": 3
+        },
+        {
+          "name": "Divine Blade",
+          "type": "damage",
+          "power": 200,
+          "lifesteal": true,
+          "target": "enemy",
+          "cooldown": 5
+        }
+      ]
+    },
+    {
+      "id": "tayous",
+      "name": "Tayous",
+      "sprite": "assets/tayous.png",
+      "hp": 130,
+      "maxHp": 130,
+      "atk": 17,
+      "def": 11,
+      "spd": 14,
+      "eva": 18,
+      "skills": [
+        {
+          "name": "Blade Slash",
+          "type": "damage",
+          "power": 100,
+          "target": "enemy"
+        },
+        {
+          "name": "Power Boost",
+          "type": "buff",
+          "stat": "atk",
+          "amount": 30,
+          "turns": 2,
+          "target": "ally",
+          "cooldown": 3
+        },
+        {
+          "name": "Shield Aura",
+          "type": "buff",
+          "stat": "def",
+          "amount": 30,
+          "turns": 2,
+          "target": "ally",
+          "cooldown": 3
+        }
+      ]
+    }
+  ]
+}

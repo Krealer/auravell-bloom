@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <!-- Character encoding for text -->
+  <meta charset="UTF-8" />
+
+   <!--  Favicon -->
+  <link rel="icon" type="image/png" href="icon.png" />
+
+
+  <!-- Responsive scaling on mobile devices -->
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+  <!-- Page title that shows in browser tab -->
+  <title>Auravell: Battle Grid</title>
+
+  <!-- Link to external stylesheet -->
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+  <!-- Main title of the game -->
+  <h1>Auravell: Battle Grid</h1>
+
+  <!-- Grid toggle checkbox to show/hide borders -->
+  <label>
+    <input type="checkbox" id="toggle-grid" checked>
+    Show Grid
+  </label>
+
+  <!-- This is where the tile-based map will be rendered -->
+  <div id="game"></div>
+
+  <!-- Info popup that shows zone name (like "Volcanic Outpost") -->
+  <div id="zone-info" style="display: none;">Zone Name</div>
+
+  <!-- === Battle Screen Elements === -->
+  <div id="battle-screen" style="display: none;">
+    
+    <!-- Sprites shown during battle -->
+    <div id="battle-view">
+      <div id="ally-sprites" class="side-sprites"></div>
+      <div id="enemy-sprites" class="side-sprites"></div>
+    </div>
+
+    <!-- HUD with character and enemy HP -->
+    <div id="hud">
+      <div id="ally-hud" class="hud-box"></div>
+      <div id="enemy-hud" class="hud-box"></div>
+    </div>
+
+    <!-- Skill selection UI -->
+    <div id="skill-ui">
+      <h3 id="skill-user-name">Skills</h3>
+      <div id="skill-buttons"></div>
+    </div>
+
+    <!-- Battle log to show what’s happening -->
+    <div id="battle-log">
+      <h3>Battle Log</h3>
+      <div id="log-messages"></div>
+    </div>
+
+    <!-- Button to manually exit battle (used during testing or as a backup) -->
+    <button id="end-battle">End Battle</button>
+  </div>
+
+  <!-- Victory screen shown when battle is won -->
+  <div id="victory-screen" style="display: none;">
+    <h2>🎉 Victory!</h2>
+    <p>You defeated all enemies!</p>
+    <button id="continue-button">Continue</button>
+  </div>
+
+  <!-- Link to your main JavaScript file -->
+  <script src="game.js"></script>
+</body>
+</html>

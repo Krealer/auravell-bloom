@@ -1,0 +1,108 @@
+{
+  "enemies": [
+    {
+      "id": "blazehound",
+      "name": "Blazehound",
+      "sprite": "assets/blazehound.png",
+      "hp": 150,
+      "maxHp": 150,
+      "atk": 22,
+      "def": 8,
+      "spd": 13,
+      "eva": 10,
+      "skills": [
+        {
+          "name": "Bite",
+          "type": "damage",
+          "power": 100,
+          "target": "enemy"
+        },
+        {
+          "name": "Flame Fang",
+          "type": "damage",
+          "power": 150,
+          "target": "enemy",
+          "cooldown": 3
+        },
+        {
+          "name": "Inferno Snap",
+          "type": "damage",
+          "power": 250,
+          "target": "enemy",
+          "cooldown": 6
+        }
+      ]
+    },
+    {
+      "id": "shardfang",
+      "name": "Shardfang",
+      "sprite": "assets/shardfang.png",
+      "hp": 130,
+      "maxHp": 130,
+      "atk": 19,
+      "def": 10,
+      "spd": 16,
+      "eva": 25,
+      "skills": [
+        {
+          "name": "Claw Slash",
+          "type": "damage",
+          "power": 100,
+          "target": "enemy"
+        },
+        {
+          "name": "Evasive Leap",
+          "type": "buff",
+          "stat": "eva",
+          "amount": 5,
+          "turns": 2,
+          "target": "self",
+          "cooldown": 5
+        },
+        {
+          "name": "Icicle Strike",
+          "type": "damage",
+          "power": 150,
+          "target": "enemy",
+          "cooldown": 3
+        }
+      ]
+    },
+    {
+      "id": "zingrief",
+      "name": "Zingrief",
+      "sprite": "assets/zingrief.png",
+      "hp": 180,
+      "maxHp": 180,
+      "atk": 14,
+      "def": 18,
+      "spd": 10,
+      "eva": 5,
+      "skills": [
+        {
+          "name": "Smash",
+          "type": "damage",
+          "power": 100,
+          "target": "enemy"
+        },
+        {
+          "name": "Group Heal",
+          "type": "heal",
+          "power": 0.10,
+          "target": "ally",
+          "aoe": true,
+          "cooldown": 5
+        },
+        {
+          "name": "Iron Shell",
+          "type": "buff",
+          "stat": "def",
+          "amount": 100,
+          "turns": 3,
+          "target": "self",
+          "cooldown": 10
+        }
+      ]
+    }
+  ]
+}

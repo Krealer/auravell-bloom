@@ -1,0 +1,251 @@
+/* ========== GENERAL STYLING ========== */
+
+/* Make the entire game centered and column-aligned */
+body {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  font-family: sans-serif;
+  margin: 0;
+  background-color: #111;
+  color: white;
+}
+
+/* ========== TILE MAP GRID ========== */
+
+/* Container for the overworld tile grid */
+#game {
+  display: grid;
+  width: max-content;
+  margin-top: 10px;
+}
+
+/* Individual tile styling */
+.tile {
+  width: 48px;
+  height: 48px;
+  font-size: 18px;
+  text-align: center;
+  line-height: 48px;
+  box-sizing: border-box;
+}
+
+/* Optional grid border styling */
+.grid-lines .tile {
+  border: 1px solid #ccc;
+}
+
+/* Visuals for each tile type */
+.tile.wall {
+  background-color: #333;
+}
+.tile.floor {
+  background-color: #eee;
+}
+.tile.enemy {
+  background-color: crimson;
+}
+.tile.player {
+  background-color: transparent;
+}
+
+/* Chibi image inside a tile (player) */
+.tile img {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  display: block;
+}
+
+#battle-view {
+  display: flex;
+  justify-content: space-between;
+  width: 100%;
+  height: 300px;
+  padding: 20px;
+}
+
+/* Layout for sprite columns (heroes/enemies) */
+.side-sprites {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  gap: 20px;
+  width: 40%;
+  align-items: center;
+}
+.side-sprites img {
+  width: 80px;
+  height: 80px;
+  object-fit: contain;
+}
+
+/* Turn indicator: yellow outline + glow */
+.active-turn {
+  outline: 3px solid yellow;
+  box-shadow: 0 0 10px yellow;
+  z-index: 10;
+}
+
+#hud {
+  display: flex;
+  justify-content: space-between;
+  width: 100%;
+  padding: 10px 20px;
+  margin-top: 20px;
+}
+
+.hud-box {
+  width: 45%;
+  background-color: #0055aa;
+  color: white;
+  padding: 10px;
+  font-family: monospace;
+  font-size: 14px;
+  border: 2px solid white;
+}
+.hud-box p {
+  margin: 5px 0;
+}
+
+.active-hud {
+  background-color: #004488;
+  font-weight: bold;
+}
+
+#battle-log {
+  background-color: #111;
+  color: #fff;
+  padding: 10px;
+  margin-top: 10px;
+  font-family: monospace;
+  border: 2px solid white;
+  height: 120px;
+  overflow-y: auto;
+}
+
+#log-messages {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  font-size: 14px;
+}
+
+#skill-ui {
+  background: #222;
+  color: white;
+  padding: 10px;
+  margin-top: 10px;
+  font-family: sans-serif;
+  border: 2px solid white;
+}
+
+#skill-buttons {
+  display: flex;
+  gap: 10px;
+  flex-wrap: wrap;
+  margin-top: 10px;
+}
+
+.skill-button {
+  background-color: #444;
+  color: white;
+  border: 1px solid white;
+  padding: 6px 10px;
+  cursor: pointer;
+}
+
+.skill-button[disabled] {
+  background-color: #888;
+  color: #ccc;
+  cursor: not-allowed;
+}
+
+#victory-screen {
+  background-color: #111;
+  color: #fff;
+  text-align: center;
+  padding: 30px;
+  border: 3px solid gold;
+  font-family: sans-serif;
+  margin-top: 20px;
+}
+
+#victory-screen button {
+  margin-top: 15px;
+  padding: 10px 20px;
+  background-color: gold;
+  color: black;
+  border: none;
+  cursor: pointer;
+  font-size: 16px;
+}
+
+#zone-info {
+  position: fixed;
+  bottom: 10%;
+  left: 50%;
+  transform: translateX(-50%);
+  background-color: rgba(0, 0, 0, 0.85);
+  color: white;
+  padding: 10px 20px;
+  border: 2px solid gold;
+  border-radius: 5px;
+  font-size: 18px;
+  font-family: sans-serif;
+  z-index: 999;
+  animation: fadeInOut 3s ease-out forwards;
+}
+
+@keyframes fadeInOut {
+  0% { opacity: 0; }
+  10% { opacity: 1; }
+  90% { opacity: 1; }
+  100% { opacity: 0; }
+}
+
+@media (max-width: 600px) {
+  #game {
+    transform: scale(0.85);
+    transform-origin: top center;
+  }
+
+  .tile {
+    width: 40px;
+    height: 40px;
+    font-size: 14px;
+    line-height: 40px;
+  }
+
+  #zone-info {
+    font-size: 14px;
+    padding: 8px 16px;
+  }
+
+  #battle-screen,
+  #victory-screen {
+    width: 100%;
+    padding: 10px;
+    box-sizing: border-box;
+  }
+
+  #skill-buttons {
+    flex-direction: column;
+    align-items: stretch;
+  }
+
+  .skill-button {
+    width: 100%;
+  }
+}
+
+@media (min-width: 601px) and (max-width: 1024px) {
+  #game {
+    transform: scale(0.95);
+    transform-origin: top center;
+  }
+
+  #battle-log {
+    height: 100px;
+  }
+}
