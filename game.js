@@ -35,34 +35,70 @@ toggleGrid.addEventListener("change", () => {
 
 // Render the map based on currentMap and playerPosition
 function renderMap() {
-  gameContainer.innerHTML = "";
-  gameContainer.style.gridTemplateColumns = `repeat(${currentMap.width}, 1fr)`;
+  const mapContainer = document.getElementById("game");
+  mapContainer.innerHTML = ""; // Clear previous map
 
+  // Optional: Apply grid lines if checkbox is checked
+  const gridToggle = document.getElementById("toggle-grid");
+  mapContainer.classList.toggle("grid-lines", gridToggle.checked);
+
+  // Loop through each row (Y axis)
   for (let y = 0; y < currentMap.height; y++) {
     for (let x = 0; x < currentMap.width; x++) {
       const tile = document.createElement("div");
-      tile.className = "tile";
+      tile.classList.add("tile");
+
       const value = currentMap.tiles[y][x];
 
-      // Determine tile type visually
-      if (x === playerPosition.x && y === playerPosition.y) {
+      // === Determine tile type and appearance ===
+      if (x === playerPos.x && y === playerPos.y) {
         tile.classList.add("player");
+
         const img = document.createElement("img");
-        img.src = "assets/player.png";
+        img.src = "assets/sprites/hero/snealer_chibi.png";
+        img.alt = "Player";
         tile.appendChild(img);
       } else if (value === 1) {
         tile.classList.add("wall");
+        tile.textContent = "#";
       } else if (typeof value === "object" && value.type === "battle") {
         tile.classList.add("enemy");
         tile.textContent = "E";
       } else {
         tile.classList.add("floor");
+        tile.textContent = ".";
       }
 
-      gameContainer.appendChild(tile);
+      // === NEW: Add movement-on-click support ===
+      tile.dataset.x = x;
+      tile.dataset.y = y;
+      tile.addEventListener("click", () => {
+        handleTileClick(x, y); // only works if adjacent
+      });
+
+      // Append the tile to the map grid
+      mapContainer.appendChild(tile);
     }
   }
 }
+
+function handleTileClick(targetX, targetY) {
+  const dx = Math.abs(targetX - playerPos.x);
+  const dy = Math.abs(targetY - playerPos.y);
+  const isAdjacent = (dx === 1 && dy === 0) || (dx === 0 && dy === 1);
+
+  if (!isAdjacent) return;
+
+  const tileValue = currentMap.tiles[targetY][targetX];
+  if (tileValue === 1) return; // block walls
+
+  playerPos.x = targetX;
+  playerPos.y = targetY;
+
+  console.log(`Moved to (${targetX}, ${targetY}) via tap/click`);
+  renderMap(); // refresh map view
+}
+
 
 // Movement via WASD
 window.addEventListener("keydown", e => {
