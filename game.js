@@ -36,44 +36,52 @@ toggleGrid.addEventListener("change", () => {
 // Render the map based on currentMap and playerPosition
 function renderMap() {
   const mapContainer = document.getElementById("game");
-  mapContainer.innerHTML = ""; // Clear previous map
+  mapContainer.innerHTML = ""; // Clear the grid before re-rendering
 
-  // Optional: Apply grid lines if checkbox is checked
+  // Apply or remove grid lines based on checkbox
   const gridToggle = document.getElementById("toggle-grid");
   mapContainer.classList.toggle("grid-lines", gridToggle.checked);
 
-  // Loop through each row (Y axis)
+  // Loop over each row (Y = vertical)
   for (let y = 0; y < currentMap.height; y++) {
+    // Loop over each column in that row (X = horizontal)
     for (let x = 0; x < currentMap.width; x++) {
       const tile = document.createElement("div");
       tile.classList.add("tile");
 
+      // Get the tile's raw value (could be number or object)
       const value = currentMap.tiles[y][x];
 
-      // === Determine tile type and appearance ===
-      if (x === playerPos.x && y === playerPos.y) {
+      // === Determine how this tile should be rendered ===
+      if (x === playerPosition.x && y === playerPosition.y) {
+        // Render the player
         tile.classList.add("player");
 
         const img = document.createElement("img");
-        img.src = "assets/sprites/hero/snealer_chibi.png";
+        img.src = "assets/snealer_chibi.png"; // Adjust for your hero
         img.alt = "Player";
         tile.appendChild(img);
       } else if (value === 1) {
+        // Wall tile
         tile.classList.add("wall");
         tile.textContent = "#";
       } else if (typeof value === "object" && value.type === "battle") {
+        // Enemy/battle tile
         tile.classList.add("enemy");
         tile.textContent = "E";
       } else {
+        // Default floor tile
         tile.classList.add("floor");
         tile.textContent = ".";
       }
 
-      // === NEW: Add movement-on-click support ===
+      // === Add click movement support ===
       tile.dataset.x = x;
       tile.dataset.y = y;
+
+      // Let players tap or click a tile to move
       tile.addEventListener("click", () => {
-        handleTileClick(x, y); // only works if adjacent
+        handleTileClick(x, y); // Will only move if valid
       });
 
       // Append the tile to the map grid
@@ -82,22 +90,52 @@ function renderMap() {
   }
 }
 
+
 function handleTileClick(targetX, targetY) {
-  const dx = Math.abs(targetX - playerPos.x);
-  const dy = Math.abs(targetY - playerPos.y);
+  // Calculate how far the target tile is from the player
+  const dx = Math.abs(targetX - playerPosition.x);
+  const dy = Math.abs(targetY - playerPosition.y);
+
+  // Allow only orthogonal 1-tile steps (no diagonal, no big jumps)
   const isAdjacent = (dx === 1 && dy === 0) || (dx === 0 && dy === 1);
+  if (!isAdjacent) {
+    console.log("Cannot move — tile is not adjacent.");
+    return;
+  }
 
-  if (!isAdjacent) return;
+  // Get what's in the tile (wall, floor, or battle object)
+  const tile = currentMap.tiles[targetY][targetX];
 
-  const tileValue = currentMap.tiles[targetY][targetX];
-  if (tileValue === 1) return; // block walls
+  // If it's a wall (value = 1), block movement
+  if (tile === 1) {
+    console.log("Cannot move — wall is blocking.");
+    return;
+  }
 
-  playerPos.x = targetX;
-  playerPos.y = targetY;
+  // Move the player to the new location
+  playerPosition.x = targetX;
+  playerPosition.y = targetY;
 
-  console.log(`Moved to (${targetX}, ${targetY}) via tap/click`);
-  renderMap(); // refresh map view
+  console.log(`Player moved to: (${targetX}, ${targetY})`);
+
+  // === Trigger battle if it's a battle tile ===
+  if (typeof tile === "object" && tile.type === "battle") {
+    // Optionally show the zone name (like "Shardfang Nest")
+    if (tile.name) {
+      showZoneInfo(tile.name);
+    }
+
+    // Start the battle using the listed enemy group
+    enterBattle(tile.group);
+
+    // Clear the battle tile so it's not triggered again
+    currentMap.tiles[targetY][targetX] = 0;
+  }
+
+  // Refresh the map view to reflect the move
+  renderMap();
 }
+
 
 
 // Movement via WASD

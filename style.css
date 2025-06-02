@@ -18,7 +18,11 @@ body {
   display: grid;
   width: max-content;
   margin-top: 10px;
+
+  /* 👇 This line creates a fixed number of columns */
+  grid-template-columns: repeat(12, 48px); /* or whatever tile size you're using */
 }
+
 
 /* Individual tile styling */
 .tile {
