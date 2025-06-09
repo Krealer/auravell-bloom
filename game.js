@@ -5,6 +5,7 @@
 // DOM references
 const gameContainer = document.getElementById("game");
 const toggleGrid = document.getElementById("toggle-grid");
+const endBattleButton = document.getElementById("end-battle");
 
 // Global game state
 let currentMap = null;
@@ -31,6 +32,13 @@ fetch("data/maps.json")
 // Show or hide grid lines
 toggleGrid.addEventListener("change", () => {
   gameContainer.classList.toggle("grid-lines", toggleGrid.checked);
+});
+
+// Allow players to exit the current battle manually
+endBattleButton.addEventListener("click", () => {
+  endBattle(false);
+  document.getElementById("game").style.display = "grid";
+  renderMap();
 });
 
 // Render the map based on currentMap and playerPosition
