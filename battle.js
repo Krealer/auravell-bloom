@@ -98,14 +98,17 @@ function applySkill(user, skill, target) {
   const log = [];
 
   if (skill.type === 'heal') {
-    const amount = Math.floor(skill.power * user.atk);
+  const userAtk = getModifiedStat(user, "atk", buffs, heroes, enemies);
+  const amount = Math.floor(skill.power * userAtk);
     target.hp = Math.min(target.maxHp, target.hp + amount);
     log.push(`${user.name} heals ${target.name} for ${amount} HP.`);
   }
 
   if (skill.type === 'damage') {
-    const rawDamage = Math.floor((skill.power / 100) * user.atk);
-    const reducedDamage = Math.max(0, rawDamage - target.def);
+  const userAtk = getModifiedStat(user, "atk", buffs, heroes, enemies);
+  const targetDef = getModifiedStat(target, "def", buffs, heroes, enemies);
+  const rawDamage = Math.floor((skill.power / 100) * userAtk);
+    const reducedDamage = Math.max(0, rawDamage - targetDef);
     target.hp = Math.max(0, target.hp - reducedDamage);
     log.push(`${user.name} hits ${target.name} for ${reducedDamage} damage.`);
 
@@ -123,8 +126,9 @@ function applySkill(user, skill, target) {
   }
 
   if (skill.type === 'buff') {
-    buffs.heroes[target.id] = buffs.heroes[target.id] || [];
-    buffs.heroes[target.id].push({
+    const team = heroes.includes(target) ? buffs.heroes : buffs.enemies;
+    team[target.id] = team[target.id] || [];
+    team[target.id].push({
       stat: skill.stat,
       amount: skill.amount,
       turns: skill.turns
