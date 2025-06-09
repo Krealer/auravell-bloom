@@ -1,0 +1,7 @@
+{
+  "name": "auravell-bloom",
+  "type": "module",
+  "scripts": {
+    "test": "node --test"
+  }
+}
