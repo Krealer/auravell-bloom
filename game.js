@@ -61,17 +61,21 @@ function renderMap() {
         img.src = "assets/snealer_chibi.png"; // Adjust for your hero
         img.alt = "Player";
         tile.appendChild(img);
-      } else if (value === 1) {
-        // Wall tile
-        tile.classList.add("wall");
-        tile.textContent = "#";
+      } else if (value === 1 || value === "tree") {
+        // Tree (non-walkable)
+        tile.classList.add("tree");
+        tile.textContent = "T";
+      } else if (value === "water") {
+        // Water (non-walkable)
+        tile.classList.add("water");
+        tile.textContent = "~";
       } else if (typeof value === "object" && value.type === "battle") {
         // Enemy/battle tile
         tile.classList.add("enemy");
         tile.textContent = "E";
       } else {
-        // Default floor tile
-        tile.classList.add("floor");
+        // Default grass tile
+        tile.classList.add("grass");
         tile.textContent = ".";
       }
 
@@ -103,12 +107,11 @@ function handleTileClick(targetX, targetY) {
     return;
   }
 
-  // Get what's in the tile (wall, floor, or battle object)
+  // Get what's in the tile (terrain or battle object)
   const tile = currentMap.tiles[targetY][targetX];
-
-  // If it's a wall (value = 1), block movement
-  if (tile === 1) {
-    console.log("Cannot move — wall is blocking.");
+  // Block movement on trees and water
+  if (tile === 1 || tile === "tree" || tile === "water") {
+    console.log("Cannot move — terrain is blocking.");
     return;
   }
 
@@ -129,7 +132,7 @@ function handleTileClick(targetX, targetY) {
     enterBattle(tile.group);
 
     // Clear the battle tile so it's not triggered again
-    currentMap.tiles[targetY][targetX] = 0;
+    currentMap.tiles[targetY][targetX] = "grass";
   }
 
   // Refresh the map view to reflect the move
@@ -153,7 +156,7 @@ window.addEventListener("keydown", e => {
 
   const targetTile = currentMap.tiles[newY][newX];
 
-  if (targetTile === 1) return; // wall
+  if (targetTile === 1 || targetTile === "tree" || targetTile === "water") return; // blocked terrain
 
   playerPosition = { x: newX, y: newY };
 
@@ -161,7 +164,7 @@ window.addEventListener("keydown", e => {
   if (typeof targetTile === "object" && targetTile.type === "battle") {
     if (targetTile.name) showZoneInfo(targetTile.name);
     enterBattle(targetTile.group);
-    currentMap.tiles[newY][newX] = 0;
+    currentMap.tiles[newY][newX] = "grass";
   }
 
   renderMap();

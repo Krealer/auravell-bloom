@@ -1,25 +1,200 @@
 {
-  "start": { "x": 1, "y": 1 },
-
+  "start": {
+    "x": 1,
+    "y": 1
+  },
   "maps": [
     {
       "name": "Grasslands",
       "width": 12,
       "height": 12,
       "tiles": [
-        
-        [1,1,1,1,1,1,1,1,1,1,1,1],
-        [1,0,0,0,0,0,0,0,0,0,{ "type": "battle", "group": ["blazehound"], "name": "Blazehound Den" },1],
-        [1,0,1,1,1,0,1,1,1,0,0,1],
-        [1,0,0,0,0,0,0,0,1,0,0,1],
-        [1,1,1,0,1,1,1,0,1,1,0,1],
-        [1,0,0,0,0,0,1,0,0,0,0,1],
-        [1,0,1,1,1,0,1,1,1,1,0,1],
-        [1,0,0,0,1,0,0,0,0,1,0,1],
-        [1,1,0,0,1,1,1,1,0,1,0,1],
-        [1,0,0,0,0,0,0,{ "type": "battle", "group": ["shardfang"], "name": "Shardfang Nest" },0,0,0,1],
-        [1,0,1,1,1,1,1,1,1,1,{ "type": "battle", "group": ["zingrief"], "name": "Zingrief Outpost" },1],
-        [1,1,1,1,1,1,1,1,1,1,1,1]
+        [
+          "tree",
+          "tree",
+          "tree",
+          "tree",
+          "tree",
+          "tree",
+          "tree",
+          "tree",
+          "tree",
+          "tree",
+          "tree",
+          "tree"
+        ],
+        [
+          "tree",
+          "grass",
+          "grass",
+          "grass",
+          "grass",
+          "grass",
+          "grass",
+          "grass",
+          "grass",
+          "grass",
+          {
+            "type": "battle",
+            "group": [
+              "blazehound"
+            ],
+            "name": "Blazehound Den"
+          },
+          "tree"
+        ],
+        [
+          "tree",
+          "grass",
+          "tree",
+          "tree",
+          "tree",
+          "grass",
+          "tree",
+          "tree",
+          "tree",
+          "grass",
+          "grass",
+          "tree"
+        ],
+        [
+          "tree",
+          "grass",
+          "grass",
+          "grass",
+          "grass",
+          "grass",
+          "grass",
+          "grass",
+          "tree",
+          "grass",
+          "grass",
+          "tree"
+        ],
+        [
+          "tree",
+          "tree",
+          "tree",
+          "grass",
+          "tree",
+          "tree",
+          "tree",
+          "grass",
+          "tree",
+          "tree",
+          "grass",
+          "tree"
+        ],
+        [
+          "tree",
+          "grass",
+          "grass",
+          "water",
+          "water",
+          "water",
+          "tree",
+          "grass",
+          "grass",
+          "grass",
+          "grass",
+          "tree"
+        ],
+        [
+          "tree",
+          "grass",
+          "tree",
+          "water",
+          "water",
+          "water",
+          "tree",
+          "tree",
+          "tree",
+          "tree",
+          "grass",
+          "tree"
+        ],
+        [
+          "tree",
+          "grass",
+          "grass",
+          "grass",
+          "tree",
+          "grass",
+          "grass",
+          "grass",
+          "grass",
+          "tree",
+          "grass",
+          "tree"
+        ],
+        [
+          "tree",
+          "tree",
+          "grass",
+          "grass",
+          "tree",
+          "tree",
+          "tree",
+          "tree",
+          "grass",
+          "tree",
+          "grass",
+          "tree"
+        ],
+        [
+          "tree",
+          "grass",
+          "grass",
+          "grass",
+          "grass",
+          "grass",
+          "grass",
+          {
+            "type": "battle",
+            "group": [
+              "shardfang"
+            ],
+            "name": "Shardfang Nest"
+          },
+          "grass",
+          "grass",
+          "grass",
+          "tree"
+        ],
+        [
+          "tree",
+          "grass",
+          "tree",
+          "tree",
+          "tree",
+          "tree",
+          "tree",
+          "tree",
+          "tree",
+          "tree",
+          {
+            "type": "battle",
+            "group": [
+              "zingrief"
+            ],
+            "name": "Zingrief Outpost"
+          },
+          "tree"
+        ],
+        [
+          "tree",
+          "tree",
+          "tree",
+          "tree",
+          "tree",
+          "tree",
+          "tree",
+          "tree",
+          "tree",
+          "tree",
+          "tree",
+          "tree"
+        ]
       ]
     }
   ]
