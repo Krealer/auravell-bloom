@@ -1,0 +1,12 @@
+{
+  "name": "auravell-bloom",
+  "version": "1.0.0",
+  "description": "A retro-inspired, grid-based tactical RPG built for the browser using HTML, CSS, and JavaScript. Step into the land of **Auravell**, explore the map, and engage in turn-based battles with a growing roster of characters and enemies.",
+  "type": "module",
+  "scripts": {
+    "test": "node test/runTests.js"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "MIT"
+}

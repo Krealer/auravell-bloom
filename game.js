@@ -2,11 +2,12 @@
 // GAME.JS - With Notations
 // =============================
 
+import { showError } from './modules/utils.js';
+
 // DOM references
 const gameContainer = document.getElementById("game");
 const toggleGrid = document.getElementById("toggle-grid");
 const endBattleButton = document.getElementById("end-battle");
-const errorMessage = document.getElementById("error-message");
 
 // Global game state
 let currentMap = null;
@@ -22,13 +23,6 @@ let selectedSkill = null;
 
 let selectedUser = null;
 
-function showError(msg) {
-  if (errorMessage) {
-    errorMessage.textContent = msg;
-    errorMessage.style.display = "block";
-  }
-  console.error(msg);
-}
 
 // Load the map JSON and render it
 fetch("data/maps.json")
@@ -279,6 +273,7 @@ function renderBattleScene() {
   heroes.forEach(hero => {
     const img = document.createElement("img");
     img.src = hero.sprite;
+    img.alt = hero.name;
     if (hero === activeUnit) img.classList.add("active-turn");
     allySprites.appendChild(img);
 
@@ -292,6 +287,7 @@ function renderBattleScene() {
   enemies.forEach(enemy => {
     const img = document.createElement("img");
     img.src = enemy.sprite;
+    img.alt = enemy.name;
     if (enemy === activeUnit) img.classList.add("active-turn");
     enemySprites.appendChild(img);
 
@@ -549,27 +545,7 @@ function endBattle(victory) {
 // Stat Calculation with Buffs
 // =============================
 
-function getModifiedStat(unit, stat) {
-  // Base value of the stat
-  let base = unit[stat];
-  const isHero = heroes.includes(unit);
-  const teamBuffs = isHero ? buffs.heroes : buffs.enemies;
-  const unitBuffs = teamBuffs[unit.id] || [];
-
-  // Sum all active buffs of the given stat
-  unitBuffs.forEach(buff => {
-    if (buff.stat === stat) {
-      base += Math.floor(unit[stat] * (buff.amount / 100));
-    }
-  });
-
-  // Clamp evasion to max 60 if it's the target stat
-  if (stat === "eva") {
-    base = Math.min(base, 60);
-  }
-
-  return base;
-}
+import { getModifiedStat } from './modules/battle.js';
 
 // =============================
 // All battle functions documented!
