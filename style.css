@@ -43,8 +43,14 @@ body {
 .tile.wall {
   background-color: #333;
 }
-.tile.floor {
-  background-color: #eee;
+.tile.grass {
+  background-color: #3fa34d;
+}
+.tile.tree {
+  background-color: #175c27;
+}
+.tile.water {
+  background-color: #4da6ff;
 }
 .tile.enemy {
   background-color: crimson;
