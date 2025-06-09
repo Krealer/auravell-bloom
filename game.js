@@ -162,13 +162,13 @@ function handleTileClick(targetX, targetY) {
 
 
 
-// Movement via WASD
+// Movement via WASD or Arrow Keys
 window.addEventListener("keydown", e => {
   const dir = { x: 0, y: 0 };
-  if (e.key === "w") dir.y = -1;
-  if (e.key === "s") dir.y = 1;
-  if (e.key === "a") dir.x = -1;
-  if (e.key === "d") dir.x = 1;
+  if (e.key === "w" || e.key === "ArrowUp") dir.y = -1;
+  if (e.key === "s" || e.key === "ArrowDown") dir.y = 1;
+  if (e.key === "a" || e.key === "ArrowLeft") dir.x = -1;
+  if (e.key === "d" || e.key === "ArrowRight") dir.x = 1;
 
   const newX = playerPosition.x + dir.x;
   const newY = playerPosition.y + dir.y;
