@@ -11,6 +11,17 @@ body {
   color: white;
 }
 
+/* Error message styling */
+#error-message {
+  background: #330000;
+  color: #ffcccc;
+  padding: 10px;
+  margin-top: 10px;
+  border: 1px solid red;
+  display: none;
+  width: fit-content;
+}
+
 /* ========== TILE MAP GRID ========== */
 
 /* Container for the overworld tile grid */

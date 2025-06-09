@@ -6,6 +6,7 @@
 const gameContainer = document.getElementById("game");
 const toggleGrid = document.getElementById("toggle-grid");
 const endBattleButton = document.getElementById("end-battle");
+const errorMessage = document.getElementById("error-message");
 
 // Global game state
 let currentMap = null;
@@ -18,7 +19,16 @@ let turnQueue = [];
 let turnIndex = 0;
 let isSelectingTarget = false;
 let selectedSkill = null;
+
 let selectedUser = null;
+
+function showError(msg) {
+  if (errorMessage) {
+    errorMessage.textContent = msg;
+    errorMessage.style.display = "block";
+  }
+  console.error(msg);
+}
 
 // Load the map JSON and render it
 fetch("data/maps.json")
@@ -27,6 +37,9 @@ fetch("data/maps.json")
     currentMap = data.maps[0]; // load first map
     playerPosition = { ...data.start };
     renderMap();
+  })
+  .catch(() => {
+    showError("Failed to load map data. Please refresh the page.");
   });
 
 // Show or hide grid lines
@@ -232,7 +245,13 @@ function enterBattle(enemyGroup) {
 
           // Render the battle UI
           renderBattleScene();
+        })
+        .catch(() => {
+          showError("Failed to load enemy data. Please refresh the page.");
         });
+    })
+    .catch(() => {
+      showError("Failed to load character data. Please refresh the page.");
     });
 }
 
