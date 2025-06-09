@@ -28,7 +28,7 @@ A retro-inspired, grid-based tactical RPG built for the browser using HTML, CSS,
 
 1. Clone or download this repository.
 2. Open `index.html` in your web browser.
-3. Use arrow keys or WASD to move the character.
+3. Use WASD or the arrow keys to move the character.
 4. Step onto enemy tiles to begin combat.
 
 ---
