@@ -51,6 +51,12 @@ A retro-inspired, grid-based tactical RPG built for the browser using HTML, CSS,
 - 💾 Save/load state  
 - 📱 Enhanced mobile touch interface  
 
+
+## 📦 Reserved Assets
+
+- `data/skills.json` – reference for a future data-driven skill system
+- `assets/thornsoul.png` and `assets/foxwolf.png` – placeholder sprites for upcoming enemies
+- `assets/audio/main_menu_bgm.wav` – reserved for a main menu background track
 ---
 
 ## 📃 License
